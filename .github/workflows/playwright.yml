@@ -9,31 +9,16 @@ jobs:
   test:
     timeout-minutes: 20
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.55.0-noble
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-        cache: 'npm'
     - name: Install dependencies
       run: npm ci
-    - name: Get Playwright version
-      id: pw-version
-      run: echo "version=$(node -e "console.log(require('./package-lock.json').packages['node_modules/@playwright/test'].version)")" >> $GITHUB_OUTPUT
-    - name: Cache Playwright browsers
-      id: pw-cache
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/ms-playwright
-        key: pw-browsers-${{ steps.pw-version.outputs.version }}
-    - name: Install Playwright Browsers
-      if: steps.pw-cache.outputs.cache-hit != 'true'
-      run: npx playwright install --with-deps
-    - name: Install system deps only
-      if: steps.pw-cache.outputs.cache-hit == 'true'
-      run: npx playwright install-deps
     - name: Run Playwright tests
       run: npx playwright test
+      env:
+        HOME: /root
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
