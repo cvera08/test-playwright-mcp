@@ -17,8 +17,21 @@ jobs:
         cache: 'npm'
     - name: Install dependencies
       run: npm ci
+    - name: Get Playwright version
+      id: pw-version
+      run: echo "version=$(node -e "console.log(require('./package-lock.json').packages['node_modules/@playwright/test'].version)")" >> $GITHUB_OUTPUT
+    - name: Cache Playwright browsers
+      id: pw-cache
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/ms-playwright
+        key: pw-chromium-${{ steps.pw-version.outputs.version }}
     - name: Install Playwright Browsers
+      if: steps.pw-cache.outputs.cache-hit != 'true'
       run: npx playwright install --with-deps chromium
+    - name: Install system deps only
+      if: steps.pw-cache.outputs.cache-hit == 'true'
+      run: npx playwright install-deps chromium
     - name: Run Playwright tests
       run: npx playwright test --project=chromium
     - uses: actions/upload-artifact@v4
