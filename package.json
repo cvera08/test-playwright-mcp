@@ -1,14 +1,19 @@
 {
   "name": "test-playwright-mcp",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {},
-  "keywords": [],
-  "author": "",
+  "description": "Playwright + TypeScript test suite for cvera08's live resume site, authored and maintained with AI-agent assistance via the Playwright MCP server.",
+  "keywords": ["playwright", "typescript", "mcp", "page-object-model", "ci"],
+  "author": "Carlos Vera",
   "license": "ISC",
-  "description": "",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "report": "playwright show-report"
+  },
   "devDependencies": {
-    "@playwright/test": "^1.55.0",
+    "@axe-core/playwright": "^4.10.1",
+    "@playwright/test": "1.61.1",
     "@types/node": "^24.3.0"
   }
 }
