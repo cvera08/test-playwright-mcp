@@ -58,7 +58,13 @@ Tests run automatically on every push across **3 browsers** (Chromium, Firefox, 
 
 ## Found in production
 
-This suite caught a real bug on day one: `og:image`, `og:url`, and the canonical link on the live resume were resolving to a duplicated path (`/full-resume/full-resume/...`, 404), silently breaking link previews on LinkedIn/Slack/WhatsApp. Root cause and fix are documented in the `full-resume` repo. See `tests/meta-tags.spec.ts`.
+First local run against the live site: **45 passed, 12 failed** — every failure was a real bug, not a test bug.
+
+- **SEO / social preview (`tests/meta-tags.spec.ts`, 9 of the 12 failures):** `og:image`, `og:url`, and the canonical link were resolving to a duplicated path (`/full-resume/full-resume/...`, 404). Root cause: `site.url` in `full-resume/_config.yml` already included `/full-resume`, and GitHub Pages' Jekyll build injects it again as `baseurl`. Silently broke link previews on LinkedIn/Slack/WhatsApp. Fixed at the source: `full-resume@352ae93`.
+- **Accessibility (`tests/accessibility.spec.ts`, 3 of the 12 failures):** date/location text (`$text-third-color`, `#97AAC3`) had a 2.37:1 contrast ratio against white — under the 4.5:1 WCAG AA minimum. Fixed at the source: `full-resume@ad31ac2` (darkened to `#5C7089`, 5.08:1).
+- **Accessibility, accepted tradeoff:** the same scan also flagged the section-title heading color (`#1DA1F2`, 2.82:1) below AA. Tried a darker, compliant shade (`#0E6FAE`, 5.38:1) first, but reverted after side-by-side review — that color is shared with the favicon and with `CVeraPortfolio`'s accent color across 8+ usages, and informal feedback preferred the lighter blue's visual emphasis on headings. Kept `#1DA1F2` and scoped the a11y check to accept this specific, documented violation rather than silently drop accessibility coverage altogether.
+
+These runs happened locally before the fixes landed, so CI never recorded a red run for them — this section is the paper trail instead. Root-cause commits are in `full-resume`, not this repo.
 
 ## Next Steps
 
