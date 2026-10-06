@@ -60,6 +60,8 @@ Tests run automatically on every push across **3 browsers** (Chromium, Firefox, 
 
 The "MCP" in this repo's name isn't decoration — `.vscode/mcp.json` wires up the [Playwright MCP server](https://github.com/microsoft/playwright-mcp), and that's the actual tool used to author and maintain these specs: a coding agent (Claude Code, Copilot agent mode) drives it to inspect the live resume's DOM, propose locators, and validate specs against the real page before a human reviews and commits.
 
+![Agent → MCP → live site → proposed diff → human review, splitting into real-bug-fix-the-source or test-bug-fix-the-spec](docs/assets/mcp-workflow.svg)
+
 - **Locator discovery**: the agent navigates the live site through MCP and proposes selectors for `pages/ResumePage.ts`, instead of hand-inspecting DevTools.
 - **Fast iteration**: when a spec fails, the agent re-runs it, reads the trace, and proposes a fix — a human decides whether it's a test bug or a real regression.
 - **Maintenance trigger**: when `full-resume/_data/data.yml` changes, an agent re-reads the live page and proposes the diff to `tests/fixtures/expectedSections.ts`.

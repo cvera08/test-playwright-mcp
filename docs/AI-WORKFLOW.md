@@ -2,6 +2,8 @@
 
 This repo is deliberately named after the [Playwright MCP server](https://github.com/microsoft/playwright-mcp) (`.vscode/mcp.json`) because that's the actual authoring workflow, not just a config file nobody uses: coding agents (Claude Code, GitHub Copilot agent mode) drive Playwright's MCP tools to inspect the live DOM, generate locators, and validate specs against the real page before a human reviews and commits.
 
+![Agent → MCP → live site → proposed diff → human review, splitting into real-bug-fix-the-source or test-bug-fix-the-spec](assets/mcp-workflow.svg)
+
 ## Where the agent adds value
 
 - **Locator discovery**: instead of hand-inspecting DevTools, the agent uses the MCP server's browser tools to navigate the live resume, read the rendered DOM, and propose selectors for `pages/ResumePage.ts`.

@@ -1,0 +1,56 @@
+<svg viewBox="0 0 980 340" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="980" height="340" fill="#ffffff"/>
+
+  <!-- Row 1: main left-to-right flow -->
+  <g>
+    <rect x="20" y="40" width="170" height="70" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.5"/>
+    <text x="105" y="68" text-anchor="middle" font-size="14" font-weight="600" fill="#1e1b4b">Coding agent</text>
+    <text x="105" y="87" text-anchor="middle" font-size="12" fill="#312e81">Claude Code / Copilot</text>
+
+    <rect x="240" y="40" width="170" height="70" rx="10" fill="#ecfeff" stroke="#0891b2" stroke-width="1.5"/>
+    <text x="325" y="68" text-anchor="middle" font-size="14" font-weight="600" fill="#083344">Playwright MCP</text>
+    <text x="325" y="87" text-anchor="middle" font-size="12" fill="#155e75">.vscode/mcp.json</text>
+
+    <rect x="460" y="40" width="170" height="70" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="545" y="68" text-anchor="middle" font-size="14" font-weight="600" fill="#14532d">Live resume site</text>
+    <text x="545" y="87" text-anchor="middle" font-size="12" fill="#166534">cvera08.github.io</text>
+
+    <rect x="680" y="40" width="170" height="70" rx="10" fill="#fefce8" stroke="#ca8a04" stroke-width="1.5"/>
+    <text x="765" y="68" text-anchor="middle" font-size="14" font-weight="600" fill="#422006">Proposed diff</text>
+    <text x="765" y="87" text-anchor="middle" font-size="12" fill="#713f12">locator / spec / fixture</text>
+
+    <line x1="190" y1="75" x2="235" y2="75" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="410" y1="75" x2="455" y2="75" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line x1="630" y1="75" x2="675" y2="75" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Down arrow into human review -->
+  <line x1="765" y1="110" x2="765" y2="150" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Row 2: human review, feeding back both ways -->
+  <g>
+    <rect x="360" y="160" width="240" height="80" rx="10" fill="#fdf2f8" stroke="#db2777" stroke-width="1.5"/>
+    <text x="480" y="192" text-anchor="middle" font-size="14" font-weight="600" fill="#500724">Human review</text>
+    <text x="480" y="212" text-anchor="middle" font-size="12" fill="#831843">real bug, or test bug?</text>
+  </g>
+
+  <line x1="680" y1="200" x2="605" y2="200" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Two outcomes -->
+  <line x1="420" y1="240" x2="420" y2="270" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="540" y1="240" x2="540" y2="270" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="290" y="275" width="220" height="55" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="400" y="298" text-anchor="middle" font-size="13" font-weight="600" fill="#7c2d12">Real bug</text>
+  <text x="400" y="316" text-anchor="middle" font-size="11" fill="#9a3412">fix full-resume, keep test strict</text>
+
+  <rect x="530" y="275" width="220" height="55" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="640" y="300" text-anchor="middle" font-size="13" font-weight="600" fill="#1e3a8a">Test bug / stale fixture</text>
+  <text x="640" y="317" text-anchor="middle" font-size="11" fill="#1e40af">commit the spec/locator fix</text>
+</svg>
