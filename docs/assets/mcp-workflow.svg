@@ -30,9 +30,6 @@
     <line x1="630" y1="75" x2="675" y2="75" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
   </g>
 
-  <!-- Down arrow into human review -->
-  <line x1="765" y1="110" x2="765" y2="150" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
-
   <!-- Row 2: human review, feeding back both ways -->
   <g>
     <rect x="360" y="160" width="240" height="80" rx="10" fill="#fdf2f8" stroke="#db2777" stroke-width="1.5"/>
@@ -40,7 +37,8 @@
     <text x="480" y="212" text-anchor="middle" font-size="12" fill="#831843">real bug, or test bug?</text>
   </g>
 
-  <line x1="680" y1="200" x2="605" y2="200" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- Proposed diff -> down -> left -> Human review, one continuous connector -->
+  <path d="M 765 110 L 765 200 L 610 200" fill="none" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
 
   <!-- Two outcomes -->
   <line x1="420" y1="240" x2="420" y2="270" stroke="#57606a" stroke-width="1.5" marker-end="url(#arrow)"/>
