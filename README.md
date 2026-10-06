@@ -56,6 +56,20 @@ Tests run automatically on every push across **3 browsers** (Chromium, Firefox, 
 
 `tests/fixtures/expectedSections.ts` mirrors the section titles and project links defined in `full-resume/_data/data.yml`, making the content checks data-driven against the actual CV source of truth rather than hardcoded per test.
 
+## AI-assisted workflow
+
+The "MCP" in this repo's name isn't decoration — `.vscode/mcp.json` wires up the [Playwright MCP server](https://github.com/microsoft/playwright-mcp), and that's the actual tool used to author and maintain these specs: a coding agent (Claude Code, Copilot agent mode) drives it to inspect the live resume's DOM, propose locators, and validate specs against the real page before a human reviews and commits.
+
+- **Locator discovery**: the agent navigates the live site through MCP and proposes selectors for `pages/ResumePage.ts`, instead of hand-inspecting DevTools.
+- **Fast iteration**: when a spec fails, the agent re-runs it, reads the trace, and proposes a fix — a human decides whether it's a test bug or a real regression.
+- **Maintenance trigger**: when `full-resume/_data/data.yml` changes, an agent re-reads the live page and proposes the diff to `tests/fixtures/expectedSections.ts`.
+
+The scope is deliberately narrow: this is an agent authoring and maintaining *deterministic* Playwright tests faster — not LLM/agent output evaluation (no Ragas, no LLM-as-a-judge here; that's a different repo, a different tier).
+
+> The agent proposes; a human decides what's worth asserting and what a failure means. The clearest example: when `meta-tags.spec.ts` started failing, the agent could have just loosened the assertion to make it green again. Instead the failure was treated as a real production bug, root-caused, and fixed at the source — the test stayed strict, the site got fixed.
+
+Full writeup: [`docs/AI-WORKFLOW.md`](docs/AI-WORKFLOW.md).
+
 ## Found in production
 
 First local run against the live site: **45 passed, 12 failed** — every failure was a real bug, not a test bug.
