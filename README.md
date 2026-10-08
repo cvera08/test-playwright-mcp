@@ -1,6 +1,7 @@
 # Playwright MCP — Resume QA Suite
 
 [![Playwright Tests](https://github.com/cvera08/test-playwright-mcp/actions/workflows/playwright.yml/badge.svg)](https://github.com/cvera08/test-playwright-mcp/actions/workflows/playwright.yml)
+
 [![Playwright](https://img.shields.io/badge/Playwright-1.61.1-2EAD33?logo=playwright&logoColor=white)](https://playwright.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
