@@ -1,5 +1,7 @@
 # Playwright MCP — Resume QA Suite
 
+[![Playwright Tests](https://github.com/cvera08/test-playwright-mcp/actions/workflows/playwright.yml/badge.svg)](https://github.com/cvera08/test-playwright-mcp/actions/workflows/playwright.yml)
+
 End-to-end test suite built with **Playwright** and **TypeScript**, using the **Page Object Model** pattern, integrated into **CI/CD via GitHub Actions**, and authored/maintained with AI-agent assistance through the [Playwright MCP server](https://github.com/microsoft/playwright-mcp).
 
 Target under test: [cvera08.github.io/full-resume](https://cvera08.github.io/full-resume/) — my own live resume site. Dogfooding the same rigor I'd apply to a production product: content integrity, outbound link health, SEO/social preview correctness, accessibility, and responsive layout.
