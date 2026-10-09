@@ -10,12 +10,16 @@ export class ResumePage {
     readonly downloadPdfLink: Locator;
     readonly projectItems: Locator;
     readonly sections: Locator;
+    readonly headerLinkedInLink: Locator;
+    readonly footerLinkedInLink: Locator;
 
     constructor(page: Page) {
         this.page = page;
         this.downloadPdfLink = page.locator('a.download-pdf-btn');
         this.projectItems = page.locator('section.project .items .item');
         this.sections = page.locator('section');
+        this.headerLinkedInLink = page.locator('.contact-item[title="linkedin"] a');
+        this.footerLinkedInLink = page.locator('section.publication a[href*="linkedin.com"]');
     }
 
     async goto() {
